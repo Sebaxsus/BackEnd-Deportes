@@ -1,0 +1,22 @@
+{
+  "name": "mio",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon server,js", "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "sebastian garcia",
+  "license": "ISC",
+  "dependencies": {
+    "corns": "^0.0.0",
+    "cors": "^2.8.5",
+    "express": "4.18.2",
+    "express-myconnection": "^1.0.4",
+    "mysql": "^2.18.1"
+  },
+  "devDependencies": {
+    "nodemon": "2.0.20"
+  }
+}
