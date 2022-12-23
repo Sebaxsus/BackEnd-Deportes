@@ -1,6 +1,6 @@
 require('dotenv').config()
 const express=require('express')
-const mysql2=require('mysql2')
+const mysql=require('mysql')
 const myconn=require('express-myconnection')
 const routes=require('./routes')
 const cors= require('cors')
@@ -14,18 +14,18 @@ app.use(cors())
 app.set('port',9000)
 
 const dbOptions={
-    database:process.env.DB_NAME || 'ciclo4mtic',
-    host:process.env.DB_HOST || 'localhost',
-    password:process.env.DB_PWD || 'JsgrMc1',
-    port:process.env.DB_PORT || '3306',
-    user:process.env.DB_USER || 'MinTic'
+    database:process.env.DB_NAME || railway,
+    host:process.env.DB_HOST || localhost,
+    password:process.env.DB_PWD || du0cRjf8cwn1q8WBsoX2,
+    port:process.env.DB_PORT || 7699,
+    user:process.env.DB_USER || root
     
     
     
 }
 
 /// middlewares
-app.use(myconn(mysql2,dbOptions,'single'))
+app.use(myconn(mysql,dbOptions,'single'))
 app.use(express.json())
 app.use(express.urlencoded({extended: false}))
 
