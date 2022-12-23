@@ -1,16 +1,16 @@
 require('dotenv').config()
 const express=require('express')
-const mysql2=require('mysql2')
+const mysql=require('mysql2')
 const myconn=require('express-myconnection')
 const routes=require('./routes')
 const cors= require('cors')
-const jwt = require('jsonwebtoken')
 
 
 const app=express()
 
 app.use(cors())
-const PORT = proces.env.PORT || 9000
+const PORT = process.env.PORT || 9000
+
 app.set('port', PORT)
 
 const dbOptions={
@@ -27,7 +27,7 @@ const dbOptions={
 }
 
 /// middlewares
-app.use(myconn(mysql2,dbOptions,'single'))
+app.use(myconn(mysql,dbOptions,'single'))
 app.use(express.json())
 app.use('/api',routes)
 //app.use(express.urlencoded({extended: false}))
