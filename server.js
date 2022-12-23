@@ -10,15 +10,17 @@ const jwt = require('jsonwebtoken')
 const app=express()
 
 app.use(cors())
-
-app.set('port',9000)
+const PORT = proces.env.PORT || 9000
+app.set('port', PORT)
 
 const dbOptions={
-    database:process.env.DB_NAME || railway,
-    host:process.env.DB_HOST || 'containers-us-west-117.railway.app',
-    password:process.env.DB_PWD || du0cRjf8cwn1q8WBsoX2,
-    port:process.env.DB_PORT || 7699,
-    user:process.env.DB_USER || root
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
+    user: process.env.DB_USER,
+    password: process.env.DB_PWD,
+    database: process.env.DB_NAME,
+    
+    
     
     
     
@@ -27,6 +29,7 @@ const dbOptions={
 /// middlewares
 app.use(myconn(mysql2,dbOptions,'single'))
 app.use(express.json())
+app.use('/api',routes)
 //app.use(express.urlencoded({extended: false}))
 
 
@@ -35,7 +38,7 @@ app.get('/',(req,res)=>{
     res.send('Welcome to my APP 2022')
 })
 
-app.use('/api',routes)
+
 
 /*app.get('/login',(req,res)=>{
     res.send(`<html>
@@ -82,6 +85,6 @@ app.post('/auth',(req,res)=>{
     })
   }*/
 
-app.listen(app.get('port'),()=>{
-    console.log(`El puerto corre en: ${app.get('port')}`)
+app.listen(PORT,()=>{
+    console.log(`El puerto corre en: ${PORT}`)
 })
