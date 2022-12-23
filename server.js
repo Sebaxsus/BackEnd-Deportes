@@ -15,7 +15,7 @@ app.set('port',9000)
 
 const dbOptions={
     database:process.env.DB_NAME || railway,
-    host:process.env.DB_HOST || containers-us-west-117.railway.app,
+    host:process.env.DB_HOST || 'containers-us-west-117.railway.app',
     password:process.env.DB_PWD || du0cRjf8cwn1q8WBsoX2,
     port:process.env.DB_PORT || 7699,
     user:process.env.DB_USER || root
