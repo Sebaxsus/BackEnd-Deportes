@@ -1,6 +1,6 @@
 require('dotenv').config()
 const express=require('express')
-const mysql=require('mysql')
+const mysql2=require('mysql2')
 const myconn=require('express-myconnection')
 const routes=require('./routes')
 const cors= require('cors')
@@ -25,9 +25,9 @@ const dbOptions={
 }
 
 /// middlewares
-app.use(myconn(mysql,dbOptions,'single'))
+app.use(myconn(mysql2,dbOptions,'single'))
 app.use(express.json())
-app.use(express.urlencoded({extended: false}))
+//app.use(express.urlencoded({extended: false}))
 
 
 /// routes
@@ -35,9 +35,9 @@ app.get('/',(req,res)=>{
     res.send('Welcome to my APP 2022')
 })
 
-app.use('/api',validacionToken,routes)
+app.use('/api',routes)
 
-app.get('/login',(req,res)=>{
+/*app.get('/login',(req,res)=>{
     res.send(`<html>
        <head>
           <title>Inicio de Sesión</title>
@@ -80,7 +80,7 @@ app.post('/auth',(req,res)=>{
             next()
         }
     })
-  }
+  }*/
 
 app.listen(app.get('port'),()=>{
     console.log(`El puerto corre en: ${app.get('port')}`)
